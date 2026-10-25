@@ -45,8 +45,7 @@ not report a game's native preset or its DLSS DLL version.
    location is `C:\Program Files (x86)\RivaTuner Statistics Server\Plugins\Client`.
 3. Open RTSS → Setup → Plugins and enable **RTSSDLSS.dll**.
 
-No installer, CMD, PowerShell command, or compiler is needed for installation.
-Windows may ask for permission to copy the file into Program Files.
+
 
 The release ZIP also contains `DLSS variables.ovl` for the OverlayEditor data
 sources. A picture-based walkthrough for adding them to a layout will be
