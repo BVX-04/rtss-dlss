@@ -11,8 +11,6 @@ This is an experimental preview, not a claim that every DLSS game or GPU works.
 | DLL lifecycle host | Three Start/Stop cycles, duplicate calls, and shared-memory cleanup passed |
 | Occupied sensor channel | Activation refused; existing publisher's sentinel data preserved |
 | Feedback decoder | 13 status/preset checks passed, including enabled but unevaluated = OFF |
-| Isolated installer/remove tests | Other plugin/config settings preserved |
-| Installer fault injection | Prior layouts, configuration and DLL state restored after failed copies |
 
 The full RTSS-hosted sensor feed and the expanded OSD text were checked
 locally. The user also confirmed visible readings, preset colors, and the
@@ -26,8 +24,8 @@ overlay plugin appeared in the crash dump's module list. A clean restart
 that also stopped the remaining RTSS hook loaders subsequently passed
 no-plugin, OverlayEditor-only, and both-plugin startup checks. The precise
 cause is not established, so this remains a known issue rather than a claim
-of a complete fix. Installer/remover restarts now also stop this installation's
-hook loaders.
+of a complete fix. This distribution has no installer or automated RTSS
+restart script.
 
 If the tray icon disappears, do not trust the old text left in a game as a
 live reading. Disable the preview plugin if instability repeats and report it.

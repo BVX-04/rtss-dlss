@@ -26,9 +26,9 @@ publisher or an older DLSS bridge causes activation to fail without modifying
 the other publisher's data. This is a known interoperability limit.
 
 Runtime code has no networking, update mechanism, analytics, game injection,
-driver-setting writes, or DLSS-indicator registry tweaks. The installation
-scripts copy local files, edit RTSS's plugin settings, preserve backups, and
-restart installation-owned RTSS processes. Read them before running them.
+driver-setting writes, or DLSS-indicator registry tweaks. Installation is a
+manual DLL copy. Build, test, and packaging scripts are included for developers;
+none is an installation script or needed to install the released DLL.
 
 References:
 

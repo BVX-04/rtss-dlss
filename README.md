@@ -8,7 +8,7 @@ beside your FPS, temperatures, or other information.
 The DLL is unsigned. See [testing and known issues](docs/TESTING.md) before
 installing or recommending it to others.
 
-[Download the preview](https://github.com/bvx-04/rtss-dlss/releases) ·
+[Download RTSSDLSS.dll](https://github.com/BVX-04/rtss-dlss/releases/download/v0.1.1-preview.1/RTSSDLSS.dll) ·
 [Installation guide](docs/INSTALLATION.md) ·
 [How it works](docs/DESIGN.md)
 
@@ -38,18 +38,19 @@ not report a game's native preset or its DLSS DLL version.
   installed. AIDA64 shared-memory publishing conflicts with this preview;
   the plugin refuses to overwrite an existing publisher.
 
-## Quick installation
+## Installation
 
-1. Download the release ZIP and extract it to a normal folder.
-2. Save any open OverlayEditor changes. Run `Install.cmd` once and approve
-   Windows' administrator prompt. RTSS is restarted; your game is not.
-3. In RTSS → Setup → Plugins, confirm `RTSSDLSS.dll` is enabled.
-4. In OverlayEditor, merge `DLSS variables.ovl` from RTSS's Overlays folder.
-   Place the imported variables in your layout and save it.
+1. Download **RTSSDLSS.dll** from [Releases](https://github.com/BVX-04/rtss-dlss/releases).
+2. Close RTSS, then copy the DLL into its `Plugins\Client` folder. The usual
+   location is `C:\Program Files (x86)\RivaTuner Statistics Server\Plugins\Client`.
+3. Open RTSS → Setup → Plugins and enable **RTSSDLSS.dll**.
 
-No compiler is needed. The installer preserves the selected overlay by
-default and backs up files it replaces. [Manual installation and removal](docs/INSTALLATION.md)
-are also documented for people who prefer not to run the scripts.
+No installer, CMD, PowerShell command, or compiler is needed for installation.
+Windows may ask for permission to copy the file into Program Files.
+
+The release ZIP also contains `DLSS variables.ovl` for the OverlayEditor data
+sources. A picture-based walkthrough for adding them to a layout will be
+added when screenshots are provided.
 
 ## Overlay variables
 
@@ -80,7 +81,7 @@ installation. [Architecture and limitations](docs/DESIGN.md).
 
 ## Build and verification
 
-All plugin and installer source is included. The public build workflow
+All plugin source is included. The public build workflow
 downloads official Zig **0.15.2**, verifies its SHA256, builds the x86 DLL,
 runs decoder and lifecycle tests, and produces the download package.
 The GitHub-hosted runner does not validate DLSS on a real NVIDIA gaming GPU.
