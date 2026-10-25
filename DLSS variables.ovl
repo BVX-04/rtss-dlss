@@ -1,0 +1,134 @@
+[Master]
+Implementation=2
+FontFace=Segoe UI
+FontHeight=-12
+FontWeight=400
+ZoomRatio=1
+[Settings]
+RefreshPeriod=250
+[General]
+Sources=14
+Tables=0
+Layers=1
+
+[Source0]
+Name=DLSS live status
+Units=
+Format=%s
+Formula=
+Provider=AIDA
+ID=DLSSBridgeStatus
+
+[Source1]
+Name=DLSS SR override
+Units=
+Format=%s
+Formula=
+Provider=AIDA
+ID=DLSS_SR_Override
+
+[Source2]
+Name=DLSS SR state code
+Units=
+Format=%d
+Formula=
+Provider=AIDA
+ID=DLSS_SR_State
+
+[Source3]
+Name=DLSS SR preset
+Units=
+Format=%s
+Formula=
+Provider=AIDA
+ID=DLSS_SR_Preset
+
+[Source4]
+Name=DLSS RR override
+Units=
+Format=%s
+Formula=
+Provider=AIDA
+ID=DLSS_RR_Override
+
+[Source5]
+Name=DLSS RR state code
+Units=
+Format=%d
+Formula=
+Provider=AIDA
+ID=DLSS_RR_State
+
+[Source6]
+Name=DLSS RR preset
+Units=
+Format=%s
+Formula=
+Provider=AIDA
+ID=DLSS_RR_Preset
+
+[Source7]
+Name=DLSS FG override
+Units=
+Format=%s
+Formula=
+Provider=AIDA
+ID=DLSS_FG_Override
+
+[Source8]
+Name=DLSS FG state code
+Units=
+Format=%d
+Formula=
+Provider=AIDA
+ID=DLSS_FG_State
+
+[Source9]
+Name=DLSS FG preset
+Units=
+Format=%s
+Formula=
+Provider=AIDA
+ID=DLSS_FG_Preset
+
+[Source10]
+Name=DLSS target process
+Units=
+Format=%s
+Formula=
+Provider=AIDA
+ID=DLSS_Process
+
+[Source11]
+Name=DLSS target PID
+Units=
+Format=%d
+Formula=
+Provider=AIDA
+ID=DLSS_PID
+
+[Source12]
+Name=DLSS API status
+Units=
+Format=%d
+Formula=
+Provider=AIDA
+ID=DLSS_API_Status
+
+[Source13]
+Name=DLSS FG target count
+Units=
+Format=%d
+Formula=
+Provider=AIDA
+ID=DLSS_FG_Count
+
+[Layer0]
+Name=DLSS Status
+Text=DLSS SR: %DLSS SR override%<SWITCH "DLSS SR state code"><CASE 2> | Preset %DLSS SR preset%<CASE><SWITCH>
+PositionX=0
+PositionY=20
+ExtentX=0
+ExtentY=0
+ExtentOrigin=0
+TextColor=80FF80

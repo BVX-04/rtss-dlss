@@ -1,0 +1,47 @@
+name: Build and test native plugin
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-x86:
+    runs-on: windows-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Download and verify official Zig 0.15.2
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $archive=Join-Path $env:RUNNER_TEMP 'zig.zip'
+          Invoke-WebRequest -Uri 'https://ziglang.org/download/0.15.2/zig-x86_64-windows-0.15.2.zip' -OutFile $archive
+          $expected='3a0ed1e8799a2f8ce2a6e6290a9ff22e6906f8227865911fb7ddedc3cc14cb0c'
+          if((Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant() -ne $expected){throw 'Zig SHA256 mismatch'}
+          $tools=Join-Path $env:RUNNER_TEMP 'zig-tools'
+          Expand-Archive -LiteralPath $archive -DestinationPath $tools
+          $zig=Join-Path $tools 'zig-x86_64-windows-0.15.2\zig.exe'
+          "ZIG_EXE=$zig" >> $env:GITHUB_ENV
+      - name: Build x86 DLL
+        shell: pwsh
+        run: .\Build.ps1 -Zig $env:ZIG_EXE
+      - name: Run decoder and lifecycle tests
+        shell: pwsh
+        run: .\Test.ps1 -Zig $env:ZIG_EXE
+      - name: Package DLL, source, license and installation guide
+        shell: pwsh
+        run: .\Package.ps1
+      - name: Upload release ZIP and checksum
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: rtss-dlss-preview
+          path: dist/*
+          if-no-files-found: error
+          retention-days: 30

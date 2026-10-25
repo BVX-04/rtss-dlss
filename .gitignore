@@ -1,0 +1,11 @@
+.build/
+dist/
+Install-backups/
+RTSSDLSS.dll
+*.pdb
+*.lib
+*.exp
+*.dmp
+*.log
+tools/
+
